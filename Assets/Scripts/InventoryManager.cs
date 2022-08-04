@@ -8,6 +8,7 @@ using UnityEngine.UI;
 public class InventoryManager : MonoBehaviour
 {
     public static InventoryManager Instance;
+    //items main list 
     public List<Item> Items = new List<Item>();
     public static System.Action<string> onItemAdd;
     public Transform ItemContent;
@@ -21,7 +22,9 @@ public class InventoryManager : MonoBehaviour
     {
         Instance = this;
     }
-
+    /// <summary>
+    ///add new item into items main list 
+    /// </summary>
     public void Add(Item item)
     {
         onItemAdd?.Invoke($"Item {item.itemName} has been added to your inventory");
@@ -40,7 +43,7 @@ public class InventoryManager : MonoBehaviour
         {
             Destroy(item.gameObject);
         }
-        
+        //create and insert UI icons from item list  
         foreach (var item in Items)
         {
             GameObject obj = Instantiate(InventoryItem, ItemContent);
@@ -54,7 +57,9 @@ public class InventoryManager : MonoBehaviour
         }
         SetInventoryItems();
     }
-
+    /// <summary>
+    ///turning on/off remove button in UI items
+    /// </summary>
     public void EnableItemsRemove()
     {
         foreach (Transform Item in ItemContent)
@@ -62,7 +67,9 @@ public class InventoryManager : MonoBehaviour
             Item.Find("RemoveButton").gameObject.SetActive(EnableRemove.isOn);
         }
     }
-
+    /// <summary>
+    ///inserting scriptable objects properties into UI items in inventory   
+    /// </summary>
     public void SetInventoryItems()
     {
         InventoryItems = ItemContent.GetComponentsInChildren<InventoryItemController>();

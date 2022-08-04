@@ -6,6 +6,9 @@ using UnityEngine.UI;
 
 public class Player : MonoBehaviour
 {
+    /// <summary>
+    ///Players point and health system 
+    /// </summary>
     public static Player Instance;
     
     [SerializeField]

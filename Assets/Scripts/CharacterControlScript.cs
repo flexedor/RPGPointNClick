@@ -13,38 +13,30 @@ public class CharacterControlScript : MonoBehaviour
 
     private void Awake()
     {
+        //6 layer is Floor 
         maskForClick =1<<6;
+        //reversing layer mask for everything that is not Floor
         maskForClick = ~maskForClick;
     }
-
+    
+    /// <summary>
+    ///in Update there is checking input and setting destination fo nav mesh Agent
+    /// </summary>
     void Update()
     {
         if (Input.GetMouseButtonDown((0)))
         {
             Ray ray = cam.ScreenPointToRay(Input.mousePosition);
             RaycastHit hitPoint;
-            //  || Physics.Raycast(ray,out hitPoint,Mathf.Infinity,maskForClick)
-            //
-            if (EventSystem.current.IsPointerOverGameObject())
-            {
-                //Debug.Log("Clicked on the UI");
-                return;
-            }
-
+            if (EventSystem.current.IsPointerOverGameObject()) return;
             if (Physics.Raycast(ray,out hitPoint,Mathf.Infinity,~maskForClick))
             {
                 targetDest.transform.position = hitPoint.point;
                 player.SetDestination(hitPoint.point);
             }
         }
+        //set active animation 
+        playerAnimator.SetBool("isWalking", player.velocity!=Vector3.zero);
 
-        if (player.velocity!=Vector3.zero)
-        {
-            playerAnimator.SetBool("isWalking", true);
-        }else if (player.velocity == Vector3.zero)
-        {
-            playerAnimator.SetBool("isWalking", false);
-        }
-        
     }
 }

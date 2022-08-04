@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 8293416138421054605}
   - component: {fileID: 6124004066101352519}
   - component: {fileID: 7526378910392689108}
-  - component: {fileID: 9217714521509389386}
   - component: {fileID: -422121678150052668}
   m_Layer: 0
   m_Name: Potion_25
@@ -102,19 +101,6 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: -5521478554001990079, guid: 9e8d89a88100f484990ce1a29dd859e1, type: 3}
---- !u!114 &9217714521509389386
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5763526910431426962}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d4c16ef0a2cf0bf4fa6c5ce671a09e54, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Item: {fileID: 11400000, guid: cff62ca03eaac9f4d86fd7300634a157, type: 2}
 --- !u!114 &-422121678150052668
 MonoBehaviour:
   m_ObjectHideFlags: 0

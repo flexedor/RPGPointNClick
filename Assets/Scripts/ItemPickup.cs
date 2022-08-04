@@ -6,6 +6,7 @@ using UnityEngine;
 public class ItemPickup : MonoBehaviour
 {
     public Item Item;
+    
     void PickUp()
     {
         InventoryManager.Instance.Add(Item);
@@ -15,6 +16,6 @@ public class ItemPickup : MonoBehaviour
     private void OnMouseDown()
     {
         PickUp();
-        //InventoryManager.Instance.ListItems();
+        InventoryManager.Instance.ListItems();
     }
 }

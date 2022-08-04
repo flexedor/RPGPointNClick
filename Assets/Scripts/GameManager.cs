@@ -2,20 +2,23 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+/// <summary>
+///Main class responsible for game state and win sequence 
+/// </summary>
 public class GameManager : MonoBehaviour
 {
     private Player player;
+    
+    //Experiences points needed to win game 
     public int ExpToWin=20;
     
     public static System.Action WinSequence;
-    public static System.Action<string> NotEnouthExpSequence;
+    public static System.Action<string> NotEnoughExpSequence;
 
     private void OnEnable()
     {
         player = GetComponentInChildren<Player>();
         DoorScript.knockInDoor += CheckWinSequence;
-        Debug.Log($"{player.Exp} player xp");
     }
     private void OnDisable() {
         DoorScript.knockInDoor -= CheckWinSequence;
@@ -29,7 +32,7 @@ public class GameManager : MonoBehaviour
         }
         else
         {
-            NotEnouthExpSequence?.Invoke($"To win you need {ExpToWin} XP, you have:{player.Exp} XP");
+            NotEnoughExpSequence?.Invoke($"To win you need {ExpToWin} XP, you have:{player.Exp} XP");
         }
     }
 }

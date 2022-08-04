@@ -6,7 +6,9 @@ using UnityEngine.UI;
 
 public class MassageFunction : MonoBehaviour
 {
-   // [SerializeField] private Text _text;
+    /// <summary>
+    ///class responsible for chat massages  
+    /// </summary>
     public Transform ChatContainer;
     public GameObject ChatItem;
     public List<string> Massages = new List<string>();
@@ -16,18 +18,22 @@ public class MassageFunction : MonoBehaviour
         InventoryItemController.OnItemUsed += AddMassage;
         Player.OnHpChanged +=AddMassage;
         Player.OnXpChanged +=AddMassage;
-        GameManager.NotEnouthExpSequence += AddMassage;
+        GameManager.NotEnoughExpSequence += AddMassage;
     }
     private void OnDisable() {
         InventoryManager.onItemAdd -= AddMassage;
         InventoryItemController.OnItemUsed -= AddMassage;
         Player.OnHpChanged -=AddMassage;
         Player.OnXpChanged -=AddMassage;
-        GameManager.NotEnouthExpSequence -= AddMassage;
+        GameManager.NotEnoughExpSequence -= AddMassage;
     
     }
+    /// <summary>
+    ///print all massages from list 
+    /// </summary>
     public void showMassage()
     {
+        //delete old messages 
         foreach (Transform item in ChatContainer)
         {
             Destroy(item.gameObject);
@@ -40,7 +46,9 @@ public class MassageFunction : MonoBehaviour
             itemName.text = massage;
         }
     }
-
+    /// <summary>
+    ///add message to list for printing 
+    /// </summary>
     public void AddMassage(string StrToAdd)
     {
         Massages.Add(StrToAdd);
