@@ -8,6 +8,7 @@ public class InventoryItemController : MonoBehaviour
     /// <summary>
     ///controller responsible for UI items mechanics such as remove item and use item  
     /// </summary>
+    [SerializeField]
     private Item item;
     public Button RemoveButton;
     public static System.Action<string> OnItemUsed;

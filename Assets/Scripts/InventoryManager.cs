@@ -47,6 +47,9 @@ public class InventoryManager : MonoBehaviour
         foreach (var item in Items)
         {
             GameObject obj = Instantiate(InventoryItem, ItemContent);
+            
+            obj.GetComponent<InventoryItemController>().AddItem(item);
+            
             var itemName = obj.transform.Find("ItemName").GetComponent<Text>();
             var itemIcon = obj.transform.Find("ItemIcon").GetComponent<Image>();
             var removeButton = obj.transform.Find("RemoveButton").GetComponent<Button>();
@@ -55,7 +58,6 @@ public class InventoryManager : MonoBehaviour
             itemName.text = item.itemName;
             itemIcon.sprite = item.icon;
         }
-        SetInventoryItems();
     }
     /// <summary>
     ///turning on/off remove button in UI items
@@ -67,15 +69,5 @@ public class InventoryManager : MonoBehaviour
             Item.Find("RemoveButton").gameObject.SetActive(EnableRemove.isOn);
         }
     }
-    /// <summary>
-    ///inserting scriptable objects properties into UI items in inventory   
-    /// </summary>
-    public void SetInventoryItems()
-    {
-        InventoryItems = ItemContent.GetComponentsInChildren<InventoryItemController>();
-        for (int i = 0; i < Items.Count; i++)
-        {
-            InventoryItems[i].AddItem(Items[i]);
-        }
-    }
+  
 }
